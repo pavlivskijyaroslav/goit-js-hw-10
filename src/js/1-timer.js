@@ -28,7 +28,7 @@ const options = {
         progressBar: false,
         timeout: 3000,
         pauseOnHover: false,
-        position: 'topCenter',
+        position: 'topRight',
         color: 'red',
         message: 'Please choose a date in the future',
       });
@@ -62,7 +62,7 @@ startBtn.addEventListener('click', () => {
         progressBar: false,
         timeout: 3000,
         pauseOnHover: false,
-        position: 'topCenter',
+        position: 'topRight',
         color: 'green',
         message: 'Таймер оновлено',
       });
