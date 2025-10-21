@@ -54,7 +54,7 @@ startBtn.addEventListener('click', () => {
     const diff = userSelectedDate - now;
     if (diff <= 0) {
       clearInterval(timerId);
-      addLeadingZero(0);
+      addLeadingZero({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       inputDate.disabled = false;
       startBtn.style.backgroundColor = '#4e75ff';
       iziToast.show({
@@ -68,8 +68,8 @@ startBtn.addEventListener('click', () => {
       });
       return;
     }
-    addLeadingZero(diff);
-  }, 100);
+    addLeadingZero(convertMs(diff));
+  }, 1000);
 });
 
 function convertMs(ms) {
@@ -86,8 +86,7 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function addLeadingZero(ms) {
-  const { days, hours, minutes, seconds } = convertMs(ms);
+function addLeadingZero({ days, hours, minutes, seconds }) {
   daysEl.textContent = days.toString().padStart(2, '0');
   hoursEl.textContent = hours.toString().padStart(2, '0');
   minutesEl.textContent = minutes.toString().padStart(2, '0');
